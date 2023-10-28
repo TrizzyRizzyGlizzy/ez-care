@@ -1,0 +1,22 @@
+.doctors-container {
+  flex: 0 0 auto;
+  width: auto;
+  height: auto;
+  display: flex;
+  position: relative;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.doctors-image {
+  width: 300px;
+  object-fit: cover;
+}
+.doctors-text {
+  margin-top: var(--dl-space-space-halfunit);
+  margin-bottom: var(--dl-space-space-halfunit);
+}
+.doctors-text1 {
+  width: var(--dl-size-size-xxlarge);
+  padding: var(--dl-space-space-halfunit);
+  align-self: center;
+}

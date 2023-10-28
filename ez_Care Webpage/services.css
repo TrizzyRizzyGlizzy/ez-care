@@ -1,0 +1,258 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+.dock{
+    max-height: 10vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.dock a{
+  float: left;
+  color: #4c4c4c;
+  text-align: center;
+  padding: 3vh 5vh;
+  text-decoration: none;
+
+}
+.dock-right a{
+  float: right;
+  color: black;
+  text-align: center;
+  padding: 2.5vh 2vh;
+  text-decoration: none;
+  font-size: 23px;
+}
+.navigation{
+    max-height: 10vh;
+    width: 100%;
+}
+
+nav{
+    display: flex;
+    padding: 2% 4%;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 3vh 3vh;
+    position: relative;
+    overflow: hidden;
+}
+.nav-links ul li a{
+    color: black;
+    text-decoration: none;
+}
+.nav-links ul li::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #36f4ae;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+    width: 100%;
+
+}
+
+  
+
+
+/*-----body-----*/
+
+
+
+
+h3{
+    text-align: center;
+    font-weight: 600;
+    margin: 10px 0;
+}
+.info-col:hover{
+    box-shadow: 0 0 25px 0px rgba(0, 0, 0, 0.294);
+}
+.services {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .services-col {
+    flex: 0 0 32%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+    max-height: 500px;
+    transition: 0.5s;
+  }
+  
+  .services-col:hover {
+    box-shadow: 0 0 25px 0px rgba(0, 0, 0, 0.554);
+  }
+  
+  .services-col img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  
+  .layer {
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+  }
+  
+  .layer:hover {
+    background: #2faecd8b;
+  }
+  
+  .layer h3 {
+    width: 100%;
+    font-weight: 500;
+    color: black;
+    font-size: 26px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    transition: 0.5s;
+  }
+  
+  .layer:hover h3 {
+    bottom: 6%;
+    opacity: 1;
+    color: #fff;
+  }
+  
+  .images {
+    max-height: 200px;
+    max-width: 200px;
+  }
+  
+/*-----Services-----
+
+.services{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding-top: 50px;
+    
+}
+.row{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+.services-col{
+    flex-basis: 32%;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    position: relative;
+    overflow: hidden;
+    max-height: 500px;
+    transition: 0.5s;
+}
+.services-col:hover{
+    box-shadow: 0 0 25px 0px rgba(0, 0, 0, 0.554);
+}
+.services-col img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.layer{
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+}
+.layer:hover{
+    background: #2faecd8b;
+}
+.layer h3{
+    width: 100%;
+    font-weight: 500;
+    color: black;
+    font-size: 26px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+    transition: 0.5s;
+}
+.layer:hover h3{
+    bottom: 6%;
+    opacity: 1;
+    color: #fff;
+}
+/*-----Footer-----*/
+.footer{
+    min-height: 47vh;
+    width: 100%;
+    background-color:rgb(245, 245, 247);
+}
+.container{
+    width: 80%;
+    margin:0vh 20vh;
+}
+.container p{
+    font-size:  12px;
+    color: #777;
+    font-weight: 300;
+    line-height: 22px;
+    padding: 10px;
+}
+/*
+.images{
+    max-height: 200px;
+    max-width: 200px;
+}
+*/
+
+/*-----Responsive Styling-----*/
+@media(max-width :700px){
+    .text-box h1{
+        font-size:30px;
+    }
+    .row{
+        flex-direction: column;
+    padding-left: 25px;
+    padding-right: 25px;
+    }
+    .images{
+        max-height: 130px;
+        max-width: 130px;
+    }
+}

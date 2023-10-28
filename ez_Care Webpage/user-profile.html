@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="user-profile.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+    </head>
+    <body onload="loadData()">
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-3 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" id="profilePic" width="150px" height="150px" object-fit="cover"  src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span 
+                        class="font-weight-bold" id="infoName2">john doe</span><span 
+                        class="text-black-50" id="infoemail">johndoe@mail.com</span><span> </span>
+                        <br><br>
+                       
+                          <form id="uploadForm" enctype="multipart/form-data" class="text-black-50">
+                            <input type="file" id="profilePicInput" accept="image/*">
+                            <button type="submit">Upload</button>
+                          </form>
+                          
+                          <script>
+                            // Get the input element and the container for the profile picture
+                            const input = document.getElementById('profilePicInput');
+                            const profilePic = document.getElementById('profilePic');
+                            
+                            // Add an event listener for the form submission
+                            document.getElementById('uploadForm').addEventListener('submit', function (e) {
+                              e.preventDefault(); // Prevent form submission
+                          
+                              // Check if a file was selected
+                              if (input.files.length > 0) {
+                                const file = input.files[0];
+                                const reader = new FileReader();
+                          
+                                // Read the uploaded file as a data URL
+                                reader.readAsDataURL(file);
+                          
+                                // Set the image source to the data URL when the file has been loaded
+                                reader.onload = function () {
+                                  profilePic.src = reader.result;
+                          
+                                  // Store the image data in local storage
+                                  localStorage.setItem('profilePicture', reader.result);
+                                };
+                              }
+                            });
+                          
+                            // Check if there is a previously selected image in local storage
+                            const savedImageData = localStorage.getItem('profilePicture');
+                            if (savedImageData) {
+                              // Display the previously selected image
+                              profilePic.src = savedImageData;
+                            }
+
+                           
+
+                          </script>
+                          
+                    </div>
+                </div>
+
+                
+                <div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right" id="pro_D">Profile Details</h4>
+                        </div>
+
+                        <div id="formContainer">
+                        <form id="patientForm" onsubmit="event.preventDefault(); updateDetails();" >
+
+
+                        <div class="row mt-2">
+                            <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="first name"  id="fname" required></div>
+                            <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" id="lname" placeholder="surname" required></div>
+                        </div>
+                         <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" id="Phonenum" required></div>
+                            <div class="col-md-12"><label class="labels">Address Line 1</label><input type="text" class="form-control" placeholder="enter address line 1" id="add1" required></div>
+                            <!-- <div class="col-md-12"><label class="labels">Address Line 2</label><input type="text" class="form-control" placeholder="enter address line 2" id="add2"></div> -->
+                            <div class="col-md-12"><label class="labels">City</label><input type="text" class="form-control" placeholder="city" id="City"></div>
+                            <div class="col-md-12"><label class="labels">Relationship</label><input type="text" class="form-control" placeholder="Relationship" id="Relationship"></div>
+                            <div class="col-md-12"><label class="labels">D.O.B</label><input type="date" class="form-control" placeholder="Date of Birth" id="user_date"></div>
+                            <div class="col-md-12"><label class="labels">Age</label><input type="number" class="form-control" placeholder="age" id="user_age"></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control" placeholder="gender" id="Gender"></div>
+                            <div class="col-md-6"><label class="labels">Bio</label><input type="text" class="form-control" id="bio" placeholder="bio"></div>
+                        </div> 
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save Details</button></div>
+                         </div></form>
+                        
+
+                    </div>
+                    <div id="infoContainer" class="hidden">
+                        <h4 id="Pat_D">Patient Details:</h4>
+                        <p><strong> First Name:</strong> <span id="infoName"></span></p>
+                        <p><strong> Last Name:</strong> <span id="infolName"></span></p>
+                        <p><strong> Phone Number:</strong> <span id="infocall"></span></p>
+                        <p><strong>Age:</strong> <span id="infoAge"></span></p>
+                        <p><strong>Gender:</strong> <span id="infoGender"></span></p>
+                        <p><strong>Address:</strong> <span id="infoAddress"></span></p>
+                        <p><strong>City:</strong> <span id="infocity"></span></p>  
+                        <p><strong>D.O.B:</strong> <span id="infodate"></span></p> 
+                        <p><strong>Relationship:</strong> <span id="inforel"></span></p> 
+                        <p><strong>Bio:</strong> <span id="infoAbout"></span></p> 
+                        <button id="editButton" onclick="editPatientDetails()">Edit Details</button>
+                        <button id="Logout_b" onclick="Logout_P()">Log out</button>
+                        <button id="back_btn" onclick="window.close(),  window.open('index.html')">back</button>
+
+                    </div>
+
+                    <script>
+                        function Logout_P()
+                        {
+                            localStorage.clear();
+                            window.close();
+
+                            // Redirect to "index.html"
+                            window.open('index.html');
+                        }
+                        function showPatientDetails() {
+                            var name = localStorage.getItem("fname");
+                            var lname = localStorage.getItem("lname");
+                            var Phonenum = localStorage.getItem("Phonenum");
+                            var email = localStorage.getItem("userEmail");
+                            var add1 = localStorage.getItem("add1");
+                            var age = localStorage.getItem("age");
+                            var gender = localStorage.getItem("gender");
+                            var city = localStorage.getItem("city");
+                            var user_date = localStorage.getItem("user_date");
+                            var Rel = localStorage.getItem("Rel");
+                            var bio = localStorage.getItem("bio");
+                            
+                            // var age = localStorage.getItem("age");
+                            // var gender = localStorage.getItem("gender");
+                            // var address = localStorage.getItem("address");
+                
+                            document.getElementById("infoName").textContent = name;
+                            document.getElementById("infolName").textContent = lname;
+                            document.getElementById("infocall").textContent = Phonenum;
+                            document.getElementById("infoName2").textContent = name+" "+lname;
+                            document.getElementById("infoemail").textContent = email;
+                            document.getElementById("infoAddress").textContent = add1;
+                            document.getElementById("infoAge").textContent = age;
+                            document.getElementById("infoGender").textContent = gender;
+                            document.getElementById("infocity").textContent = city;
+                            document.getElementById("infodate").textContent = user_date;
+                            document.getElementById("inforel").textContent = Rel;
+                            document.getElementById("infoAbout").textContent = bio;
+
+                            // document.getElementById("infoAge").textContent = age;
+                            // document.getElementById("infoGender").textContent = gender;
+                            // document.getElementById("infoAddress").textContent = address;
+                
+                            document.getElementById("formContainer").classList.add("hidden");
+                            document.getElementById("pro_D").classList.add("hidden");
+                            document.getElementById("infoContainer").classList.remove("hidden");
+                        }
+                
+                        function editPatientDetails() {
+                            document.getElementById("formContainer").classList.remove("hidden");
+                            document.getElementById("pro_D").classList.remove("hidden");
+                            document.getElementById("infoContainer").classList.add("hidden");
+                        }
+                
+                        function updateDetails() {
+                            var name = document.getElementById("fname").value;
+                            var lname = document.getElementById("lname").value;
+                            var Phonenum = document.getElementById("Phonenum").value;
+                            var add1 = document.getElementById("add1").value;
+                            var age = document.getElementById("user_age").value;
+                            var gender = document.getElementById("Gender").value;
+                            var city = document.getElementById("City").value;
+                            var user_date = document.getElementById("user_date").value;
+                            var Rel = document.getElementById("Relationship").value;
+                            var bio = document.getElementById("bio").value;
+
+                            // var age = document.getElementById("age").value;
+                            // var gender = document.getElementById("gender").value;
+                            // var address = document.getElementById("address").value;
+                
+                            localStorage.setItem("fname", name);
+                            localStorage.setItem("lname", lname);
+                            localStorage.setItem("Phonenum", Phonenum);
+                            localStorage.setItem("add1", add1);
+                            localStorage.setItem("age", age);
+                            localStorage.setItem("gender", gender);
+                            localStorage.setItem("city", city);
+                            localStorage.setItem("user_date", user_date);
+                            localStorage.setItem("Rel", Rel);
+                            localStorage.setItem("bio", bio);
+                            // localStorage.setItem("age", age);
+                            // localStorage.setItem("gender", gender);
+                            // localStorage.setItem("address", address);
+                
+                            showPatientDetails();
+                        }
+                
+                        function loadData() {
+                            var name = localStorage.getItem("fname");
+                            var lname = localStorage.getItem("lname");
+                            var Phonenum = localStorage.getItem("Phonenum");
+                            var email = localStorage.getItem("userEmail");
+                            var add1 = localStorage.getItem("add1");
+                            var age = localStorage.getItem("age");
+                            var gender = localStorage.getItem("gender");
+                            var city = localStorage.getItem("city");
+                            var user_date = localStorage.getItem("user_date");
+                            var Rel = localStorage.getItem("Rel");
+                            var bio = localStorage.getItem("bio");
+                            // var age = localStorage.getItem("age");
+                            // var gender = localStorage.getItem("gender");
+                            // var address = localStorage.getItem("address");
+                
+                            if (fname&&lname&&Phonenum&&add1&&age&&gender&&city&&user_date&&Rel&&bio) {
+                                document.getElementById("fname").value = name;
+                                document.getElementById("lname").value = lname;
+                                document.getElementById("Phonenum").value = Phonenum;
+                                document.getElementById("add1").value = add1;
+                                document.getElementById("user_age").value = age;
+                                document.getElementById("Gender").value = gender;
+                                document.getElementById("City").value = city;
+                                document.getElementById("user_date").value = user_date;
+                                document.getElementById("Relationship").value = Rel;
+                                document.getElementById("bio").value = bio;
+                                
+                                // document.getElementById("age").value = age;
+                                // document.getElementById("gender").value = gender;
+                                // document.getElementById("address").value = address;
+                
+                                showPatientDetails();
+                            }
+                        }
+                    </script>
+                </div>
+
+
+
+
+
+
+                <!-- <div class="col-md-4">
+                    <div class="p-3 py-5">
+                          <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><br>  
+                        <div class="col-md-12"><label class="labels">blood type</label><input type="text" class="form-control" placeholder="blood type" value=""></div> <br>
+                        <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        </div>
+        </div>
+        
+    </body>
+</html>

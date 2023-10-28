@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login/Signup - ez|Care</title>
+
+    <link rel="stylesheet" href="Creation-page.css">
+    <link rel="icon" type="image/x-icon" href="/images/ezcarelogo.png">
+    <!-- <a><img src="images/ezCare.jpeg" style="max-width: 150px; float: left; margin: 7px 20px;"></a> -->
+    
+
+  </head>
+
+  <body>
+  
+    
+       
+   
+    <section class="forms-section">
+        
+      <a href="index.html"><img src="images/ezCare.jpeg" style="max-width: 150px; float: left; margin: 7px 20px;"></a>
+            
+    
+       
+    
+        <div class="forms">
+          <div class="form-wrapper is-active">
+            <button type="button" class="switcher switcher-login">
+              Login
+              <span class="underline"></span>
+            </button>
+            <form class="form form-login" method="post"  action="connect.php" id="login-user">
+              <fieldset>
+                <legend>Please, enter your email and password for login.</legend>
+                <div class="input-block">
+                  <label for="login-email">E-mail</label>
+                  <input id="login-email" type="email" name="email"  autocomplete="off" required>
+                </div>
+                <div class="input-block">
+                  <label for="login-password">Password</label>
+                  <input id="login-password" type="password" name="password" autocomplete="off" required>
+                </div>
+              </fieldset>
+              <button type="submit" class="btn-login">Login</button>
+            </form>
+          </div>
+          <div class="form-wrapper">
+            <button type="button" class="switcher switcher-signup">
+              Sign Up
+              <span class="underline"></span>
+            </button>
+            <form class="form form-signup" method="post" action="user_creation.php" id="Create_user" >
+              <fieldset>
+                <legend>Please, enter your email, password and password confirmation for sign up.</legend>
+                <div class="input-block">
+                  <label for="signup-email">E-mail</label>
+                  <input name="signup-email"  id="signup-email" type="email" autocomplete="off" required>
+                </div>
+                <div class="input-block">
+                  <label for="signup-password">Password</label>
+                  <input  name="signup-password" id="signup-password"  type="password" autocomplete="off" required>
+                </div>
+                <div class="input-block">
+                  <label for="signup-password-confirm">Confirm password</label>
+                  <input name="signup-password-confirm" id="signup-password-confirm" type="password" autocomplete="off" required>
+                </div>
+              </fieldset>
+              <button type="submit" class="btn-signup"  >Continue</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <script src="Creation-page.js"></script>
+    
+    
+
+  </body>
+</html>
