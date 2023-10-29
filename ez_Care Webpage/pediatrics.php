@@ -1,3 +1,7 @@
+<?php
+  include('header.php');
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -167,33 +171,7 @@
             </style>
 
     </head>
-
     <body>
- <!-----Dock----->
-        <section class="dock">
-            <a href="tel:+4733378901"><i class="fa-solid fa-phone" style="color:#006eff"></i>(+501) 333 78 901</a>
-            <a href="mailto:danielmezamz@gmail.com"><i class="fa-solid fa-envelope" style="padding: 5px; color:#006eff"></i>hello@ezcarebz.com</a>
-            <div class="dock-right">
-                <a href=""><i class="fa-brands fa-twitter" style="padding-right: 15px; color: #006eff;"></i></a>
-                <a href=""><i class="fa-brands fa-instagram" style="padding-right: 15px; color: #006eff"></i></a>
-                <a href=""><i class="fa-brands fa-square-facebook" style="padding-right: 15px; color: #006eff"></i></a>
-            </div>
-        </section>
-        <hr>
-
- <!-----Navigation Links----->
-        <section class="navigation">
-            <div class="nav-links">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <!--<li><a href="login.html">Create account</a></li>-->
-                    <li><div class ="User-icon"><a href="Creation-page.html" id="userEmailLink" target="_blank">Login/Signup</a></div></li>
-                    <a><img src="images/ezCare.jpeg" style="max-width: 150px; float: left; margin: 7px 20px;"></a>
-                </ul>
-            </div>
-        </section>
 
         <section>
             <h1 id="medic">
