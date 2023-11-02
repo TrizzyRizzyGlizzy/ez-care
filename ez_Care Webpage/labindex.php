@@ -1,3 +1,45 @@
+<?php
+require 'connection.php';
+
+if(isset($_POST["submit"])) { $name = $_POST["name"];
+    $email = $_POST["email"];
+    $age = $_POST["age"];
+    
+    $gender = $_POST["gender"];
+    $gender = "";
+    foreach ($gender as $row) {
+        $gender .= $row . ",";
+    }
+
+    $Symptoms = $_POST["Symptoms"];
+    $Temperature = $_POST["Temperature"];
+    $BloodPressure = $_POST["BloodPressure"];
+    $Pulse = $_POST["Pulse"];
+    $Height = $_POST["Height"];
+    $weight = $_POST["weight"];
+    $BloodType = $_POST["BloodType"];
+    $allergies = $_POST["allergies"];
+    $currentMedication = $_POST["currentMedication"];
+    $reasonForVisit = $_POST["reasonForVisit"];
+    $appointmentDateTime = $_POST["appointmentDateTime"];
+    $doctor = $_POST["doctor"];
+    $insuranceProvider = $_POST["insuranceProvider"];
+    $emergencyContactName= $_POST["emergencyContactName"];
+    $EMcontactNumber = $_POST["contactNumber"];
+    $EMcontactRelationship = $_POST["contactRelationship"];
+
+    $query = "INSERT INTO labratory_medicalrecords 
+VALUES  ('', '$name', '$email', '$age', '$Symptoms', '$Temperature',
+'$BloodPressure', '$Pulse', '$Height', '$weight', '$BloodType','$allergies', '$currentMedication',
+'$reasonForVisit', '$appointmentDateTime', '$doctor', '$insuranceProvider', '$emergencyContactName',
+'$EMcontactNumber', '$EMcontactRelationship');"
+
+mysqli_query($conn, $query);
+echo
+"<script>alert('Data Inserted Successfully');</script>";
+
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -212,15 +254,17 @@
               <label for="age">Age:</label>
               <input type="text" id="age" name="age" placeholder="Your age.." required>
           
-              <label for="gender">Gender:</label>
-              <select id="gender" name="gender" required>
-                <option value="">--Select--</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
-              </select>
-          
-              <label for="symptoms">Symptoms:</label>
+              <label>Select Gender:</label>
+<br>
+<input type="radio" id="male" name="gender" value="male">
+<label for="male">Male</label>
+<input type="radio" id="female" name="gender" value="female">
+<label for="female">Female</label>
+<input type="radio" id="other" name="gender" value="other">
+<label for="other">Other</label>
+<input type="text" id="otherGender" name="otherGender" placeholder="Please specify">
+              
+    <label for="symptoms">Symptoms:</label>
               <textarea id="symptoms" name="symptoms" placeholder="Describe your symptoms.." required></textarea>
           
               <label for="temperature">Temperature:</label>
@@ -237,11 +281,13 @@
           
               <label for="height">Height:</label>
               <input type="text" id="height" name="height" placeholder="Your height.." required>
-              <span>cm</span>
+              <span>ft </span>
+              <input type="text" id="height" name="height" placeholder="Your height.." required>
+              <span>in </span>
           
               <label for="weight">Weight:</label>
               <input type="text" id="weight" name="weight" placeholder="Your weight.." required>
-              <span>kg</span>
+              <span>lbs</span>
           
               <label for="blood-type">Blood Type:</label>
               <select id="blood-type" name="blood-type" required>
@@ -281,7 +327,7 @@
               <input type="text" id="emergency-contact-name" name="emergency-contact-name" placeholder="Emergency contact name.." required>
               
               <label for="emergency-contact-phone">Emergency Contact Phone:</label>
-              <input type="text" id="emergency-contact-phone" name="emergency-contact-phone" placeholder="Emergency contact phone.." required>
+              <input type=other"text" id="emergency-contact-phone" name="emergency-contact-phone" placeholder="Emergency contact phone.." required>
               
               <label for="emergency-contact-relationship">Relationship to Emergency Contact:</label>
               <input type="text" id="emergency-contact-relationship" name="emergency-contact-relationship" placeholder="Relationship to emergency contact.." required>
